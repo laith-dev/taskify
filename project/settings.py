@@ -3,6 +3,8 @@ from pathlib import Path
 import dj_database_url
 from decouple import config
 
+from core.constants import Environment
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,11 +12,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e^z)!4=&#f$obog97-#hmz62g*@dfy&f+c@ibma6qsffc+$v4='
+SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ENV = config('ENV', default=Environment.DEV)
+
+DEBUG = True if ENV == Environment.DEV else False
 
 ALLOWED_HOSTS = []
 
