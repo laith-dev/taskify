@@ -16,7 +16,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 ENV = config('ENV', default=Environment.DEV)
 
-DEBUG = True if ENV == Environment.DEV else False
+DEBUG = True if ENV == Environment.DEV.value else False
 
 ALLOWED_HOSTS = []
 
